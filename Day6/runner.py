@@ -1,9 +1,9 @@
-def get_counts(line: str, mark: int):
+def get_counts(line: str, mark: int) -> int:
     for i in range(0,len(line)):
         if len(set(line[i:i+mark])) == mark:
             return i+mark    
 
-def gen_lines(file):
+def gen_lines(file: str) -> str:
     with open(file,'r') as infile:
         for line in infile:
             yield(line.replace('\n',''))
