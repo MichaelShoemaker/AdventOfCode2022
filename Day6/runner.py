@@ -1,12 +1,15 @@
-def get_counts(file):
-    f = open(file).readline()
-    for line in f:
-        for i in range(0,len(line)-3):
-            if len(set(line[i:i+3])) == 3:
-                return i+3    
+def get_counts(line: str, mark: int):
+    for i in range(0,len(line)):
+        if len(set(line[i:i+mark])) == mark:
+            return i+mark    
 
-
+def gen_lines(file):
+    with open(file,'r') as infile:
+        for line in infile:
+            yield(line.replace('\n',''))
 
 if __name__=='__main__':
-    a = 
-    get_counts('file')
+    count = 0
+    for i in gen_lines('prod'):
+        print(f"Part1 : {get_counts(i, 4)}")
+        print(f"Part2 : {get_counts(i, 14)}")
